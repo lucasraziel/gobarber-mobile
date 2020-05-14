@@ -2,15 +2,18 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled(RectButton)`
-  flex: 1;
-  align-items: center;
+  width: 100%;
+  height: 60px;
+  background: #ff9000;
+  border-radius: 10px;
+  margin-top: 8px;
+
   justify-content: center;
-  padding: 0 30px;
+  align-items: center;
 `;
 
-export const Title = styled.Text`
-  font-size: 20px;
-  color: #f4ede8;
+export const ButtonText = styled.Text`
   font-family: 'RobotoSlab-Medium';
-  margin: 64px 0 24px;
+  color: #312e38;
+  font-size: 18px;
 `;

@@ -14,6 +14,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
 import Icon from 'react-native-vector-icons/Feather';
 import getValidationErrors from '../../utils/getValidationErros';
+import api from '../../services/api';
 
 import {
   Container,
@@ -54,9 +55,18 @@ const SignUp: React.FC = () => {
         abortEarly: false,
       });
 
-      // await api.post('/users', data);
+      console.log('came here');
 
-      // history.push('/');
+      const response = await api.post('/users', data);
+
+      console.log(response.data);
+
+      Alert.alert(
+        'Cadastro realizado com sucesso',
+        'Você já pode realizar o seu login'
+      );
+
+      navigation.navigate('SignIn');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);

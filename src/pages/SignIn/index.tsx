@@ -22,6 +22,7 @@ import {
   CreateAccountButtonText,
 } from './styles';
 
+import { useAuth } from '../../hooks/auth';
 import logoImg from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErros';
@@ -39,6 +40,8 @@ const SignIn: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
 
+  const { signIn } = useAuth();
+
   const handleSignIn = useCallback(async (data: Credentials) => {
     try {
       formRef.current?.setErrors({});
@@ -53,7 +56,7 @@ const SignIn: React.FC = () => {
         abortEarly: false,
       });
 
-      // await signIn(data);
+      await signIn(data);
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
